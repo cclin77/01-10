@@ -1,12 +1,19 @@
+import java.io.File;
 
 public class MethodDemo {
     public static void main(String args[]){
-        int a=3;
-        m1(a);
-        System.out.println("AAAAA:"+a);
+        File file = new File("D:\\10tian");
+        showFile(file);
     }
-    public static void m1(int a){
-        a=5;
-        System.out.println("CCCCC:"+a);
+    //局部变量
+    public static void showFile(File file){
+        if(file.isDirectory()){
+            File files[] = file.listFiles();
+            for(File f:files){
+                showFile(f);
+            }
+        }else {
+            System.out.println(file.getName());
+        }
     }
 }
